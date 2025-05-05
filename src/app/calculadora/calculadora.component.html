@@ -1,0 +1,29 @@
+<div class="page-container">
+    <header class="header">
+      <h1>Calculadora</h1>
+    </header>
+  
+    <main class="main-content">
+      <div class="calculator">
+        <input type="text" [value]="display" readonly class="display" />
+  
+        <div class="buttons-grid">
+          <button *ngFor="let num of ['7', '8', '9']" (click)="press(num)">{{ num }}</button>
+          <button class="operation" (click)="press('+')">+</button>
+  
+          <button *ngFor="let num of ['4', '5', '6']" (click)="press(num)">{{ num }}</button>
+          <button class="operation" (click)="press('-')">-</button>
+
+          <button *ngFor="let num of ['1', '2', '3']" (click)="press(num)">{{ num }}</button>
+          <button class="operation" (click)="clear()">C</button>
+  
+          <button class="zero-btn" (click)="press('0')">0</button>
+          <button class="equal-btn" (click)="calculate()">=</button>
+        </div>
+      </div>
+    </main>
+  
+    <footer class="footer">
+      <p>© 2025 Calculadora - Todos os direitos reservados.</p>
+    </footer>
+  </div>

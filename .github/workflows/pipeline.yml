@@ -1,0 +1,30 @@
+name: Build and Deploy Angular Calculadora
+
+on:
+  push:
+    branches:
+      - main  
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Unit Tests
+        run: npm run test -- --watch=false --browsers=ChromeHeadless
+
+      - name: Build Angular App
+        run: npm run build -- --configuration=production --base-href=/calculadora/
+
+      - name: Echo Simulated Deploy
+        run: echo "Deploy concluído com sucesso."
